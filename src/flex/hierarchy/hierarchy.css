@@ -1,0 +1,74 @@
+.hier-app {
+	margin:         4px;
+	width:          500px;
+	height:         600px;
+	text-align:     center;
+	border:         solid 0.5px black;
+}
+
+.hier-frame {
+	position:       absolute;
+	border:         solid 1px black;
+}
+
+.hier-iconized-frame-name {
+	position:		absolute;
+	left:			-10px;
+	top:			62px;
+	width: 			70px;
+	text-align: 	center;
+	word-wrap: 		break-word;
+}
+
+.hier-sizer {
+	position:       		absolute;
+	border-left:       		solid 1px lightgray;
+	border-top:       		solid 1px lightgray;
+	cursor:         		nwse-resize;
+	background-color:       transparent;
+	opacity:                0.0;
+	transition-property:    background-color, opacity, border-left, border-top;
+	transition-duration:    300ms;
+}
+
+.hier-sizer:hover {
+	background-color:       white;
+	opacity:                0.9;
+}
+
+.hier-title-bar {
+	position:               absolute;
+	border-bottom: 			solid 1px lightgray;
+	cursor:                 move;
+	background-color:       transparent;
+	opacity:                0.0;
+	transition-property:    background-color, opacity, border-bottom;
+	transition-duration:    300ms;
+}
+
+.hier-title-bar:hover {
+	background-color:       white;
+	opacity:                0.9;
+}
+
+.frame-burger-menu {
+	width: 			18px;
+	position: 		absolute;
+	left:			1px;
+	top: 			1px;
+	cursor: 		pointer;
+}
+
+.frame-iconize {
+	margin-right:	4px;
+	width: 			18px;
+	float: 			right;
+	cursor: 		pointer;
+}
+
+.frame-destroy {
+	margin-right:	2px;
+	width: 			18px;
+	float: 			right;
+	cursor: 		pointer;
+}

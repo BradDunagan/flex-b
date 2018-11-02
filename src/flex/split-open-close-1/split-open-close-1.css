@@ -1,0 +1,64 @@
+.split-open-close-1 {
+}
+
+.a0 {
+	border: 	solid 2px black;
+	width: 		400px;
+	height: 	450px;
+    padding: 	2px;
+    position: 	absolute;
+    left: 		2px;
+    top: 		2px;	
+}
+
+
+.sizeable {
+    border: 	solid 1px black;
+/*	padding: 	2px;						*/
+    position: 	absolute;
+}
+.sizer {
+    border:     solid 1px gray;
+    position:   absolute;
+    width:      14px;
+    height:     14px;
+}
+.rr-panel-control {
+    position:   absolute;
+} 
+.rr-panel-button {
+    height:     		25px;
+    background-color: white;
+    border: 			solid 1px gray;				
+}
+.split {
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.content {
+/*	border: 1px solid #C0C0C0;				*/
+/*	box-shadow: inset 0 1px 2px #e4e4e4;	*/
+    background-color: #fff;
+    padding-top:	2px;
+    padding-left: 	6px;
+}
+.gutter {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+    background-image: url('../../../node_modules/split.js/grips/vertical.png');
+}
+.gutter.gutter-vertical {
+    cursor: row-resize;
+    background-image: url('../../../node_modules/split.js/grips/horizontal.png');
+}
+.split.split-horizontal, .gutter.gutter-horizontal {
+    height: 100%;
+    float: left;
+}
