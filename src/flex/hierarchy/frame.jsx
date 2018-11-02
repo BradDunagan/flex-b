@@ -26,9 +26,10 @@ class Frame extends Component {
 		this.sizeW0 = 0;
 		this.sizeH0 = 0;
 
-		this.iconize 	= this.iconize.bind ( this );
-		this.clickIcon	= this.clickIcon.bind ( this );
-		this.doIt		= this.doIt.bind ( this );
+		this.iconize 		= this.iconize.bind ( this );
+		this.transitionEnd	= this.transitionEnd.bind ( this );
+		this.clickIcon		= this.clickIcon.bind ( this );
+		this.doIt			= this.doIt.bind ( this );
 	}	//	constructor
 
 	iconize ( o ) {
@@ -43,12 +44,12 @@ class Frame extends Component {
 			style: {
 				left:		this.state.style.left,
 				top: 		this.state.style.top,
-				width:		this.state.style.left,
+				width:		this.state.style.width,
 				height:		this.state.style.height,
 				transitionProperty: 	'left, top, width, height',
-				transitionDuration:		'100ms' },
-			name: {
-				display: 	'none'
+				transitionDuration:		'200ms' },
+			iconName: {
+				visibility: 	'hidden',
 			}
 		} } );
 		window.setTimeout ( () => {
@@ -59,13 +60,34 @@ class Frame extends Component {
 					width:		'50px',
 					height:		'60px',
 					transitionProperty: 	'left, top, width, height',
-					transitionDuration:		'100ms' },
-				name: {
-					display: 	'block'
+					transitionDuration:		'200ms' },
+				iconName: {
+					visibility: 	'hidden',
 				}
 			} } );
 		}, 50 );
 	}	//	iconize()
+
+	transitionEnd ( ev ) {
+		let sW = 'transitionEnd()';
+		console.log ( sW );
+		//	This fires for each of the left, top, width, height transition
+		//	properties. That is, four times.  Simply set the icon's name 
+		//	visiblity on the event that indicates one of the transitions 
+		//	to icon is ended.
+		if ( this.state.iconized.iconName.visibility !== 'visible' ) {
+			this.setState ( { iconized: {
+				style: {
+					left:		this.state.iconized.style.left,
+					top: 		this.state.iconized.style.top,
+					width:		this.state.iconized.style.width,
+					height:		this.state.iconized.style.height,
+					transitionProperty: 	'left, top, width, height',
+					transitionDuration:		'200ms' },
+				iconName: { visibility: 'visible' } } 
+			} );
+		}
+	}	//	transitionEnd()
 
 	clickIcon ( ev ) {
 		let sW = 'clickIcon()';
@@ -78,14 +100,14 @@ class Frame extends Component {
 				width:		this.state.style.width,
 				height:		this.state.style.height,
 				transitionProperty: 	'left, top, width, height',
-				transitionDuration:		'100ms' },
-			name: {
-				display: 	'none'
+				transitionDuration:		'200ms' },
+			iconName: {
+				visibility:		'hidden'
 			}
 		} } );
 		window.setTimeout ( () => {
 			this.setState ( { iconized: null } );
-		}, 100 );
+		}, 200 );
 	}	//	clickIcon()
 
 	doIt ( o ) {
@@ -150,11 +172,12 @@ class Frame extends Component {
 	render() {
 		if ( this.state.iconized ) {
 			return (
-				<div className 	= 'hier-frame'
-					 style 		= { this.state.iconized.style }
-					 onClick	= { this.clickIcon } >
+				<div className 			= 'hier-frame'
+					 style 				= { this.state.iconized.style }
+					 onTransitionEnd	= { this.transitionEnd }
+					 onClick			= { this.clickIcon } >
 					<div className 	= 'hier-iconized-frame-name'
-						 style 		= { this.state.iconized.name } >
+						 style 		= { this.state.iconized.iconName } >
 						FrameName
 					</div>
 				</div>
